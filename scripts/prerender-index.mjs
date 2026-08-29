@@ -2,27 +2,29 @@
 /**
  * Post-build for Vercel.
  *
- * Nitro 3's SSR function dynamically `import()`s hashed `_ssr/router-*.mjs`
- * chunks. Vercel's file tracer skips those, so production throws:
- *   Cannot find module '/var/task/_ssr/router-….mjs'
+ * Nitro 3 emits a serverless function whose hashed `_ssr/router-*.mjs` chunks
+ * are dropped by Vercel's tracer, so `/` 500s with ERR_MODULE_NOT_FOUND.
  *
- * This invitation is a static page, so we:
- *   1. Snapshot `/` to `static/index.html`
- *   2. Route all document requests to that file (no serverless function)
- *   3. Force-include `_ssr/**` on the function as a fallback
+ * This invitation is a static page. Snapshot HTML, then DELETE the function so
+ * Vercel cannot route traffic to it.
  */
-import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
+import {
+  cpSync,
+  mkdirSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = join(ROOT, ".vercel/output");
 const FUNC = join(OUT, "functions/__server.func");
-const SSR_DIR = join(FUNC, "_ssr");
 const HANDLER = join(FUNC, "index.mjs");
-const INDEX = join(OUT, "static/index.html");
+const STATIC_DIR = join(OUT, "static");
+const INDEX = join(STATIC_DIR, "index.html");
 const CONFIG = join(OUT, "config.json");
-const VC_CONFIG = join(FUNC, ".vc-config.json");
+const DIST = join(ROOT, "dist");
 
 const mod = await import(pathToFileURL(HANDLER).href);
 const fetchFn = mod.default?.fetch ?? mod.default;
@@ -65,31 +67,10 @@ writeFileSync(
     2,
   ),
 );
-console.log("[prerender] patched config.json → static SPA");
 
-try {
-  const vc = JSON.parse(readFileSync(VC_CONFIG, "utf8"));
-  vc.includeFiles = "**";
-  writeFileSync(VC_CONFIG, JSON.stringify(vc, null, 2));
-  console.log("[prerender] patched .vc-config.json includeFiles");
-} catch (err) {
-  console.warn("[prerender] could not patch .vc-config.json:", err);
-}
+rmSync(join(OUT, "functions"), { recursive: true, force: true });
+console.log("[prerender] removed serverless functions");
 
-try {
-  const ssrPath = join(SSR_DIR, "ssr.mjs");
-  const siblings = readdirSync(SSR_DIR).filter(
-    (name) => name.endsWith(".mjs") && name !== "ssr.mjs",
-  );
-  if (siblings.length > 0) {
-    const banner = siblings
-      .map((name) => `import ${JSON.stringify(`./${name}`)};\n`)
-      .join("");
-    writeFileSync(ssrPath, banner + readFileSync(ssrPath, "utf8"));
-    console.log(
-      `[prerender] pinned ${siblings.length} _ssr chunks for Vercel nft`,
-    );
-  }
-} catch (err) {
-  console.warn("[prerender] could not pin _ssr imports:", err);
-}
+rmSync(DIST, { recursive: true, force: true });
+cpSync(STATIC_DIR, DIST, { recursive: true });
+console.log("[prerender] copied static output to dist/");
