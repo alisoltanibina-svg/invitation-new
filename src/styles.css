@@ -16,6 +16,7 @@
   --color-ink-soft: #6a5348;
   --color-bronze: #8d6b3e;
   --color-seal: #7a2433;
+  --color-forest: #24332c;
 
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -66,11 +67,11 @@
   background:
     linear-gradient(
       180deg,
-      rgb(18 8 11 / 0.45) 0%,
-      rgb(18 8 11 / 0.15) 28%,
-      rgb(18 8 11 / 0.2) 48%,
-      rgb(18 8 11 / 0.82) 78%,
-      rgb(18 8 11 / 0.94) 100%
+      rgb(255 248 240 / 0.08) 0%,
+      rgb(255 248 240 / 0.02) 36%,
+      rgb(255 248 240 / 0.08) 62%,
+      rgb(255 248 240 / 0.38) 86%,
+      rgb(255 248 240 / 0.58) 100%
     );
 }
 

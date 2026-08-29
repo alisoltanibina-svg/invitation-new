@@ -1,10 +1,10 @@
 export const invitation = {
   bride: "اسراء",
   groom: "محمدصادق",
-  monogram: "ا‌م",
+  monogram: "A/S",
   title: "جشن پیوند اسراء و محمدصادق",
-  coverKicker: "جشن پیوند",
-  coverTitle: "به ضیافت ما دعوتید",
+  coverKicker: "A / S",
+  coverTitle: "با افتخار به جشن پیوند ما دعوتید",
   openLabel: "باز کنید",
   bismillah: "به نام خالق عشق",
   letter:
