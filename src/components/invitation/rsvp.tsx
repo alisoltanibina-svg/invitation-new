@@ -19,11 +19,45 @@ type Saved = {
   at: string;
 };
 
+async function sendRsvpEmail(payload: Saved) {
+  const to = invitation.rsvpEmail.trim();
+  if (!to) throw new Error("no-email");
+  const label =
+    rsvpOptions.find((o) => o.id === payload.status)?.label ?? payload.status;
+  const res = await fetch(
+    `https://formsubmit.co/ajax/${encodeURIComponent(to)}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        _subject: "پاسخ دعوت‌نامه اسراء و محمدصادق",
+        _template: "table",
+        _captcha: "false",
+        "نام مراسم": invitation.title,
+        وضعیت: label,
+        یادداشت: payload.note || "—",
+        زمان: new Date(payload.at).toLocaleString("fa-IR", {
+          dateStyle: "medium",
+          timeStyle: "short",
+        }),
+      }),
+    },
+  );
+  if (!res.ok) throw new Error("send-failed");
+  const data = (await res.json()) as { success?: boolean | string };
+  if (data.success === false) throw new Error("send-failed");
+}
+
 export function Rsvp({ onAfterSave }: { onAfterSave: () => void }) {
   const [status, setStatus] = useState<RsvpStatus | null>(null);
   const [note, setNote] = useState("");
   const [saved, setSaved] = useState<Saved | null>(null);
   const [justSaved, setJustSaved] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     try {
@@ -40,17 +74,28 @@ export function Rsvp({ onAfterSave }: { onAfterSave: () => void }) {
     }
   }, []);
 
-  function submit(e: FormEvent) {
+  async function submit(e: FormEvent) {
     e.preventDefault();
-    if (!status) return;
+    if (!status || sending) return;
     const next: Saved = {
       status,
       note: note.trim().slice(0, NOTE_MAX),
       at: new Date().toISOString(),
     };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-    setSaved(next);
-    setJustSaved(true);
+    setSending(true);
+    setError(null);
+    try {
+      await sendRsvpEmail(next);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      setSaved(next);
+      setJustSaved(true);
+    } catch {
+      setError(
+        "ارسال به ایمیل انجام نشد. اتصال اینترنت را بررسی کنید و دوباره بزنید.",
+      );
+    } finally {
+      setSending(false);
+    }
   }
 
   const selectedLabel = rsvpOptions.find((o) => o.id === saved?.status)?.label;
@@ -149,8 +194,16 @@ export function Rsvp({ onAfterSave }: { onAfterSave: () => void }) {
             {invitation.rsvpHint}
           </p>
 
-          <Button type="submit" variant="gold" className="w-full" disabled={!status}>
-            {saved ? "به‌روزرسانی پاسخ" : "ثبت پاسخ"}
+          {error ? (
+            <p className="font-body text-sm leading-6 text-wine">{error}</p>
+          ) : null}
+
+          <Button type="submit" variant="gold" className="w-full" disabled={!status || sending}>
+            {sending
+              ? "در حال ارسال…"
+              : saved
+                ? "به‌روزرسانی پاسخ"
+                : "ثبت پاسخ"}
           </Button>
         </form>
       )}

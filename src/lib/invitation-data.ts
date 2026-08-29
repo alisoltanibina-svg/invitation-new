@@ -22,6 +22,7 @@ export const invitation = {
   rsvpLead:
     "حضور شما، بهترین هدیه‌ی این شب خواهد بود. شما را صمیمانه دعوت می‌کنیم تا در جشن آغاز زندگی مشترکمان، همراه و شادی‌بخش این شب خاطره‌انگیز باشید.",
   rsvpHint: "لطفاً در صورت امکان پاسخ خود را پیش از مراسم ثبت کنید.",
+  rsvpEmail: "alisoltanibina@gmail.com",
   locationTitle: "نشانی مراسم",
   locationKicker: "محل میعاد ما",
   venueName: "عمارت شمس",
