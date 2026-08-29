@@ -14,7 +14,7 @@ var install_page_default = "<!DOCTYPE html>\n<html lang=\"en\" class=\"device-de
 var grokOgIdentity = { "site": {
 	"title": "جشن پیوند اسراء و محمدصادق",
 	"card": "custom",
-	"description": "با مهر و شوق، از شما دعوت می‌کنیم آغاز فصل تازه زندگی‌مان را در کنار ما جشن بگیرید.",
+	"description": "وَمِنْ آیَاتِهِ أَنْ خَلَقَ لَکُم مِّنْ أَنفُسِکُمْ أَزْوَاجًا لِّتَسْکُنُوا إِلَیْهَا وَجَعَلَ بَیْنَکُم مَّوَدَّةً وَرَحْمَةً",
 	"image": "/og.jpg"
 } };
 //#endregion

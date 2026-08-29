@@ -79,7 +79,7 @@ export function Rsvp({ onAfterSave }: { onAfterSave: () => void }) {
           <p className="mt-2 font-body text-sm text-ink-soft">{selectedLabel}</p>
           <Button
             type="button"
-            variant="ink"
+            variant="gold"
             className="mt-6 w-full"
             onClick={onAfterSave}
           >
@@ -101,7 +101,7 @@ export function Rsvp({ onAfterSave }: { onAfterSave: () => void }) {
                     className={cn(
                       "flex cursor-pointer items-center justify-between rounded-[var(--radius-lg)] border px-4 py-3.5 transition-[border-color,background-color] duration-[var(--motion-quick)]",
                       active
-                        ? "border-bronze bg-gold/15"
+                        ? "border-gold bg-gold/15"
                         : "border-ink/10 bg-ivory-deep/40 hover:border-ink/20",
                     )}
                   >
@@ -149,7 +149,7 @@ export function Rsvp({ onAfterSave }: { onAfterSave: () => void }) {
             {invitation.rsvpHint}
           </p>
 
-          <Button type="submit" variant="ink" className="w-full" disabled={!status}>
+          <Button type="submit" variant="gold" className="w-full" disabled={!status}>
             {saved ? "به‌روزرسانی پاسخ" : "ثبت پاسخ"}
           </Button>
         </form>

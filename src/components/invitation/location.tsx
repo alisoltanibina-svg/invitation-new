@@ -1,4 +1,4 @@
-import { CalendarPlus, MapPin, Navigation } from "lucide-react";
+import { CalendarPlus, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   buildIcs,
@@ -25,16 +25,13 @@ export function Location() {
   return (
     <section id="location" className="scroll-mt-20 px-6 py-10" aria-labelledby="loc-title">
       <div className="text-center">
-        <p className="mb-2 font-body text-xs tracking-[0.3em] text-bronze">
-          {invitation.locationTitle}
-        </p>
         <h2 id="loc-title" className="font-display text-2xl text-ink">
-          {invitation.locationKicker}
+          {invitation.locationTitle}
         </h2>
         <FloralDivider className="my-4 text-bronze" />
       </div>
 
-      <div className="overflow-hidden rounded-[var(--radius-xl)] border border-ink/8">
+      <div className="overflow-hidden rounded-[var(--radius-xl)] border-2 border-gold">
         <img
           src="/images/venue.jpg"
           alt="نمایی از عمارت شمس در غروب"
@@ -61,9 +58,8 @@ export function Location() {
             href={item.href}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-[var(--radius-md)] border border-ink/12 bg-ivory-deep/50 font-body text-sm text-ink transition-colors duration-[var(--motion-quick)] hover:bg-gold/15"
+            className="inline-flex h-12 items-center justify-center rounded-[var(--radius-md)] border-2 border-gold bg-ivory font-body text-sm text-ink transition-colors duration-[var(--motion-quick)] hover:bg-gold/15"
           >
-            <Navigation className="size-4 text-bronze" strokeWidth={1.6} />
             {item.label}
           </a>
         ))}
@@ -74,7 +70,7 @@ export function Location() {
       </p>
 
       <div className="mt-5 grid gap-2">
-        <Button type="button" variant="ink" className="w-full" onClick={downloadIcs}>
+        <Button type="button" variant="gold" className="w-full" onClick={downloadIcs}>
           <CalendarPlus className="size-4" strokeWidth={1.6} />
           افزودن به تقویم
         </Button>
@@ -82,7 +78,7 @@ export function Location() {
           href={cal.google}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex h-12 items-center justify-center rounded-[var(--radius-md)] border border-ink/12 font-body text-sm text-ink transition-colors hover:bg-ivory-deep"
+          className="inline-flex h-12 items-center justify-center rounded-[var(--radius-md)] border-2 border-gold font-body text-sm text-ink transition-colors hover:bg-gold/15"
         >
           افزودن به گوگل‌کلندر
         </a>

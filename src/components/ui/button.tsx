@@ -9,12 +9,12 @@ const buttonVariants = cva(
     variants: {
       variant: {
         gold:
-          "bg-gold text-wine hover:bg-gold-bright ring-offset-wine",
+          "bg-gold text-ink hover:bg-gold-bright ring-offset-ivory",
         outline:
-          "border border-gold/55 bg-transparent text-gold hover:bg-gold/10 ring-offset-wine",
+          "border-2 border-gold bg-transparent text-ink hover:bg-gold/15 ring-offset-ivory",
         paper:
-          "border border-ink/12 bg-ivory text-ink hover:bg-ivory-deep ring-offset-ivory",
-        ink: "bg-ink text-ivory hover:bg-wine ring-offset-ivory",
+          "border-2 border-gold bg-ivory text-ink hover:bg-gold/15 ring-offset-ivory",
+        ink: "bg-gold text-ink hover:bg-gold-bright ring-offset-ivory",
         ghost: "bg-transparent text-gold hover:bg-gold/10 ring-offset-wine",
       },
       size: {

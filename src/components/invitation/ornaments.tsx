@@ -85,10 +85,10 @@ export function CornerFlourish({
 export function LaurelMonogram({ className }: { className?: string }) {
   return (
     <img
-      src="/images/monogram-as.jpg"
+      src="/images/monogram-am.jpg"
       alt=""
       className={cn(
-        "size-52 rounded-full object-cover shadow-[0_16px_40px_rgba(36,51,44,0.28)] ring-1 ring-gold/35",
+        "size-52 rounded-full object-cover shadow-[0_16px_40px_rgba(141,107,62,0.32)] ring-1 ring-gold-bright/50",
         className,
       )}
     />
@@ -131,11 +131,11 @@ export function OpenSealButton({
       onClick={onOpen}
       disabled={opening}
       aria-label={label}
-      className="seal-pulse group mt-8 inline-flex h-[3.6rem] items-center gap-2 rounded-full border border-[#e8dcc8]/85 bg-forest px-6 text-ivory shadow-[0_14px_32px_rgba(36,51,44,0.32)] transition-transform duration-[var(--motion-fast)] active:scale-[0.97] disabled:opacity-70"
+      className="seal-pulse group mt-8 inline-flex h-[3.6rem] items-center gap-2 rounded-full border border-gold-bright/90 bg-gold px-6 text-ink shadow-[0_14px_32px_rgba(141,107,62,0.35)] transition-transform duration-[var(--motion-fast)] active:scale-[0.97] disabled:opacity-70"
     >
-      <LaurelSprig className="text-[#e8dcc8]" />
+      <LaurelSprig className="text-ivory" />
       <span className="px-1 font-display text-lg tracking-wide">{label}</span>
-      <LaurelSprig className="text-[#e8dcc8]" />
+      <LaurelSprig className="text-ivory" />
     </button>
   );
 }
