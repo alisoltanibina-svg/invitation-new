@@ -36,6 +36,16 @@ function requestHost(event: GrokPwaEvent): string {
   );
 }
 
+function isVercelHost(host: string): boolean {
+  const h = host.split(":")[0].trim().toLowerCase();
+  return (
+    h === "vercel.app" ||
+    h.endsWith(".vercel.app") ||
+    h === "vercel.com" ||
+    h.endsWith(".vercel.com")
+  );
+}
+
 function injectHeadStreaming(response: Response, host: string): Response {
   const injector = createHeadInjector({
     host,
@@ -103,9 +113,15 @@ export default async function grokPwaMiddleware(
     result instanceof Response &&
     result.body &&
     String(result.headers.get("content-type") ?? "").includes("text/html") &&
-    !result.headers.get("content-encoding")
+    !result.headers.get("content-encoding") &&
+    !isVercelHost(requestHost(event))
   ) {
-    return injectHeadStreaming(result, requestHost(event));
+    try {
+      return injectHeadStreaming(result, requestHost(event));
+    } catch (err) {
+      console.error("[grok-pwa] head inject failed:", err);
+      return result;
+    }
   }
   return result;
 }
