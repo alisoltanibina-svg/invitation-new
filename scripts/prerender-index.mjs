@@ -2,18 +2,11 @@
 /**
  * Post-build for Vercel.
  *
- * Nitro 3 emits a serverless function whose hashed `_ssr/router-*.mjs` chunks
- * are dropped by Vercel's tracer, so `/` 500s with ERR_MODULE_NOT_FOUND.
- *
- * This invitation is a static page. Snapshot HTML, then DELETE the function so
- * Vercel cannot route traffic to it.
+ * Nitro's vercel preset always emits `.vercel/output` (Build Output API) plus a
+ * broken serverless function. Vercel prefers that folder over `outputDirectory`,
+ * so we snapshot `/` to `dist/` and then delete `.vercel/output` entirely.
  */
-import {
-  cpSync,
-  mkdirSync,
-  rmSync,
-  writeFileSync,
-} from "node:fs";
+import { cpSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
@@ -23,7 +16,6 @@ const FUNC = join(OUT, "functions/__server.func");
 const HANDLER = join(FUNC, "index.mjs");
 const STATIC_DIR = join(OUT, "static");
 const INDEX = join(STATIC_DIR, "index.html");
-const CONFIG = join(OUT, "config.json");
 const DIST = join(ROOT, "dist");
 
 const mod = await import(pathToFileURL(HANDLER).href);
@@ -42,35 +34,17 @@ if (!res.ok || html.length < 400 || html.includes('"unhandled":true')) {
   process.exit(1);
 }
 
-mkdirSync(dirname(INDEX), { recursive: true });
+mkdirSync(STATIC_DIR, { recursive: true });
 writeFileSync(INDEX, html);
 console.log(`[prerender] wrote index.html (${html.length} bytes)`);
 
-writeFileSync(
-  CONFIG,
-  JSON.stringify(
-    {
-      version: 3,
-      routes: [
-        {
-          src: "/assets/(.*)",
-          headers: {
-            "cache-control": "public, max-age=31536000, immutable",
-          },
-        },
-        { src: "/favicon.ico", dest: "/favicon.svg" },
-        { handle: "filesystem" },
-        { src: "/(.*)", dest: "/index.html" },
-      ],
-    },
-    null,
-    2,
-  ),
-);
-
-rmSync(join(OUT, "functions"), { recursive: true, force: true });
-console.log("[prerender] removed serverless functions");
-
 rmSync(DIST, { recursive: true, force: true });
 cpSync(STATIC_DIR, DIST, { recursive: true });
+if (!html.includes("<!DOCTYPE html")) {
+  console.error("[prerender] dist/index.html missing doctype");
+  process.exit(1);
+}
 console.log("[prerender] copied static output to dist/");
+
+rmSync(OUT, { recursive: true, force: true });
+console.log("[prerender] removed .vercel/output so Vercel uses dist/");
