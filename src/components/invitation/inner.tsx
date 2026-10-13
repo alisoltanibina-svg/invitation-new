@@ -63,9 +63,9 @@ export function Inner({
 
           <header className="relative aspect-[3/4] overflow-hidden">
             <img
-              src="/images/couple-veiled.jpg"
-              alt="عروس و داماد در باغ، از پشت"
-              className="size-full object-cover"
+              src="/images/couple.jpg"
+              alt="فاطمه و علی"
+              className="size-full object-cover object-[center_30%]"
             />
             <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgb(244_235_224)_0%,rgb(244_235_224_/_0.86)_10%,rgb(244_235_224_/_0.12)_24%,transparent_36%,rgb(244_235_224_/_0.08)_50%,rgb(244_235_224_/_0.45)_68%,rgb(244_235_224_/_0.88)_86%,rgb(244_235_224)_100%)]" />
             <p className="absolute inset-x-0 top-0 z-20 px-12 pt-5 text-center font-display text-2xl font-bold leading-relaxed text-bronze">
