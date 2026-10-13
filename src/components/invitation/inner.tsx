@@ -65,10 +65,10 @@ export function Inner({
             <img
               src="/images/couple.jpg"
               alt="فاطمه و علی"
-              className="size-full object-cover object-[center_30%]"
+              className="absolute inset-x-0 top-[16%] h-full w-full object-cover object-top"
             />
-            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgb(244_235_224)_0%,rgb(244_235_224_/_0.86)_10%,rgb(244_235_224_/_0.12)_24%,transparent_36%,rgb(244_235_224_/_0.08)_50%,rgb(244_235_224_/_0.45)_68%,rgb(244_235_224_/_0.88)_86%,rgb(244_235_224)_100%)]" />
-            <p className="absolute inset-x-0 top-0 z-20 px-12 pt-5 text-center font-display text-2xl font-bold leading-relaxed text-bronze">
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgb(244_235_224)_0%,rgb(244_235_224_/_0.55)_6%,transparent_14%,transparent_64%,rgb(244_235_224_/_0.4)_78%,rgb(244_235_224_/_0.9)_90%,rgb(244_235_224)_100%)]" />
+            <p className="absolute inset-x-0 top-0 z-20 px-12 pt-4 text-center font-display text-2xl font-bold leading-relaxed text-bronze">
               {invitation.bismillah}
             </p>
           </header>
