@@ -1,21 +1,20 @@
 export const invitation = {
-  bride: "اسراء",
-  groom: "محمدصادق",
-  monogram: "A/M",
-  title: "جشن پیوند اسراء و محمدصادق",
-  coverKicker: "A / M",
+  bride: "فاطمه",
+  groom: "علی",
+  monogram: "F/A",
+  title: "جشن پیوند فاطمه و علی",
+  coverKicker: "F / A",
   coverTitle: "با افتخار به جشن پیوند ما دعوتید",
   openLabel: "باز کنید",
   bismillah: "به نام خالق عشق",
   letterTitle: "جشن پیوند",
   letter:
-    "وَمِنْ آیَاتِهِ أَنْ خَلَقَ لَکُم مِّنْ أَنفُسِکُمْ أَزْوَاجًا لِّتَسْکُنُوا إِلَیْهَا وَجَعَلَ بَیْنَکُم مَّوَدَّةً وَرَحْمَةً إِنَّ فِی ذَلِکَ لَآیَاتٍ لِّقَوْمٍ یَتَفَکَّرُونَ.",
-  storyTitle: "داستان عاشقانه‌ی ما، از این روز آغاز می‌شود",
-  story:
-    "آغاز زندگی مشترکمان را در سایه مهر الهی جشن می‌گیریم. حضور گرم شما، زیباترین هدیه برای آغاز این سفر طولانی و شیرین است.",
+    "فضولی‌نین بو مصرالارینداکی عشق کیمی، سئوگیمیز ده کؤنلوموزده چیچکلندی. ایندی بو سئوگی‌نی بیر عؤمورلوک یولا چئوییره‌جه‌ییمیز شنلیک گونوموزده سیزی ده یانیمیزدا گؤرمک ایسته‌ریک.",
+  storyTitle: "گلیشینیز سئوینجیمیزه سئوینج قاتار",
+  story: "گلیشینیز سئویـنـجیمیزه سئویـنـج قاتار.",
   detailsTitle: "جزئیات مراسم",
   timelineTitle: "یک غروب، یک آغاز",
-  timelineLead: "دوشنبه، بیست‌وسوم شهریور ۱۴۰۵",
+  timelineLead: "پنجشنبه، سی‌ام مهر ۱۴۰۵",
   countdownTitle: "تا لحظه دیدار شما",
   countdownPast: "این غروب به زیبایی در خاطره‌ها ماند",
   rsvpTitle: "پاسخ به دعوت",
@@ -25,30 +24,30 @@ export const invitation = {
   rsvpEmail: "sadegh.sd.1172@gmail.com",
   locationTitle: "نشانی مراسم",
   locationKicker: "محل میعاد ما",
-  venueName: "عمارت شمس",
-  venueAddress:
-    "تهران، بزرگراه همت شرق به غرب، بلوار عدل شمالی، عمارت شمس",
+  venueName: "تالار رویال",
+  venueAddress: "تبریز، خاوران، تالار رویال",
   jalali: {
     year: 1405,
-    month: 6,
-    day: 23,
-    weekday: "دوشنبه",
-    monthName: "شهریور",
-    dayName: "بیست‌وسوم",
+    month: 7,
+    day: 30,
+    weekday: "پنجشنبه",
+    monthName: "مهر",
+    dayName: "سی‌ام",
   },
-  timeRange: "۱۹:۰۰ — ۲۲:۰۰",
-  timeLead: "ساعت ۱۹:۰۰ الی ۲۲:۰۰",
-  // 23 Shahrivar 1405 = 14 Sep 2026, 19:00–22:00 Asia/Tehran (UTC+3:30)
-  startIso: "2026-09-14T15:30:00.000Z",
-  endIso: "2026-09-14T18:30:00.000Z",
+  timeRange: "۱۶:۰۰ — ۱۹:۰۰",
+  timeLead: "ساعت ۱۶:۰۰ الی ۱۹:۰۰",
+  // 30 Mehr 1405 = 22 Oct 2026, 16:00–19:00 Asia/Tehran (UTC+3:30)
+  startIso: "2026-10-22T12:30:00.000Z",
+  endIso: "2026-10-22T15:30:00.000Z",
   schedule: [
-    { time: "۱۹:۰۰", title: "پذیرایی و خوش‌آمدگویی" },
-    { time: "۲۰:۰۰", title: "آغاز مراسم" },
-    { time: "۲۱:۰۰", title: "صرف شام" },
-    { time: "۲۲:۰۰", title: "بدرقه مهمانان" },
+    { time: "۱۶:۰۰", title: "پذیرایی و خوش‌آمدگویی" },
+    { time: "۱۷:۰۰", title: "آغاز مراسم" },
+    { time: "۱۸:۰۰", title: "صرف شام" },
+    { time: "۱۹:۰۰", title: "بدرقه مهمانان" },
   ],
-  mapsQuery: "تالار پذیرایی عمارت شمس همت بلوار عدل تهران",
-  neshanPlace: "https://neshan.org/maps/places/334dfd52e43bacaa25e3c576d1273bc0",
+  mapsQuery: "باغ تالار رویال خاوران تبریز",
+  neshanPlace:
+    "https://neshan.org/maps/search/%D8%A8%D8%A7%D8%BA%20%D8%AA%D8%A7%D9%84%D8%A7%D8%B1%20%D8%B1%D9%88%DB%8C%D8%A7%D9%84%20%D8%AE%D8%A7%D9%88%D8%B1%D8%A7%D9%86%20%D8%AA%D8%A8%D8%B1%DB%8C%D8%B2",
 } as const;
 
 export const rsvpOptions = [
@@ -93,7 +92,7 @@ export function calendarUrls() {
   const location = encodeURIComponent(
     `${invitation.venueName}، ${invitation.venueAddress}`,
   );
-  const dates = "20260914T190000/20260914T220000";
+  const dates = "20261022T160000/20261022T190000";
   return {
     google: `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${text}&dates=${dates}&ctz=Asia/Tehran&details=${details}&location=${location}`,
   };
@@ -103,12 +102,12 @@ export function buildIcs(): string {
   return [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//EsraMohammadsadegh//Invitation//FA",
+    "PRODID:-//FatemehAli//Invitation//FA",
     "CALSCALE:GREGORIAN",
     "BEGIN:VEVENT",
-    "DTSTAMP:20260801T000000Z",
-    "DTSTART;TZID=Asia/Tehran:20260914T190000",
-    "DTEND;TZID=Asia/Tehran:20260914T220000",
+    "DTSTAMP:20261001T000000Z",
+    "DTSTART;TZID=Asia/Tehran:20261022T160000",
+    "DTEND;TZID=Asia/Tehran:20261022T190000",
     `SUMMARY:${invitation.title}`,
     `LOCATION:${invitation.venueName}، ${invitation.venueAddress}`,
     `DESCRIPTION:${invitation.letter}`,

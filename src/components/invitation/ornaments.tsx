@@ -85,7 +85,7 @@ export function CornerFlourish({
 export function LaurelMonogram({ className }: { className?: string }) {
   return (
     <img
-      src="/images/monogram-am.jpg"
+      src="/images/monogram-fa.jpg"
       alt=""
       className={cn(
         "size-52 rounded-full object-cover shadow-[0_16px_40px_rgba(141,107,62,0.32)] ring-1 ring-gold-bright/50",

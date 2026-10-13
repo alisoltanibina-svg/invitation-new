@@ -8,7 +8,7 @@ import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import appCss from "../styles.css?url";
 
-const APP_NAME = "جشن پیوند اسراء و محمدصادق";
+const APP_NAME = "جشن پیوند فاطمه و علی";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -19,7 +19,7 @@ export const Route = createRootRoute({
       { name: "theme-color", content: "#1A0C10" },
       {
         name: "description",
-        content: "دعوت‌نامه دیجیتال جشن پیوند اسراء و محمدصادق — عمارت شمس، بیست‌وسوم شهریور ۱۴۰۵",
+        content: "دعوت‌نامه دیجیتال جشن پیوند فاطمه و علی — تالار رویال، سی‌ام مهر ۱۴۰۵",
       },
     ],
     links: [

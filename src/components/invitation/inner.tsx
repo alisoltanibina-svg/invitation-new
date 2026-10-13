@@ -11,10 +11,10 @@ import { Rsvp } from "./rsvp";
 import { ShamsiDate } from "./shamsi-date";
 
 const scheduleIcons = {
-  "۱۹:۰۰": Sparkles,
-  "۲۰:۰۰": Heart,
-  "۲۱:۰۰": UtensilsCrossed,
-  "۲۲:۰۰": Moon,
+  "۱۶:۰۰": Sparkles,
+  "۱۷:۰۰": Heart,
+  "۱۸:۰۰": UtensilsCrossed,
+  "۱۹:۰۰": Moon,
 } as const;
 
 function scrollToId(id: string) {
@@ -106,9 +106,9 @@ export function Inner({
           <section id="letter" className="scroll-mt-20 px-6 py-10 text-center">
             <Heart className="mx-auto mb-4 size-5 text-bronze" strokeWidth={1.4} />
             <p
-              className="font-display text-[1.35rem] font-normal leading-[2.45] text-ink"
+              className="font-body text-[1.05rem] font-normal leading-[2.2] text-ink"
               dir="rtl"
-              lang="ar"
+              lang="az"
             >
               {invitation.letter}
             </p>

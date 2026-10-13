@@ -13,7 +13,7 @@ function downloadIcs() {
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = "esra-mohammadsadegh.ics";
+  a.download = "fatemeh-ali.ics";
   a.click();
   URL.revokeObjectURL(url);
 }
@@ -34,7 +34,7 @@ export function Location() {
       <div className="overflow-hidden rounded-[var(--radius-xl)] border-2 border-gold">
         <img
           src="/images/venue.jpg"
-          alt="نمایی از عمارت شمس در غروب"
+          alt="نمایی از تالار رویال"
           className="aspect-video w-full object-cover"
         />
       </div>
@@ -66,7 +66,7 @@ export function Location() {
       </div>
 
       <p className="mt-3 text-center font-body text-xs text-ink-soft">
-        مسیر رسیدن به عمارت شمس را با یکی از سرویس‌های بالا باز کنید.
+        مسیر رسیدن به تالار رویال را با یکی از سرویس‌های بالا باز کنید.
       </p>
 
       <div className="mt-5 grid gap-2">

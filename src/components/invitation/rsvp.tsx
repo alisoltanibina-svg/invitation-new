@@ -33,7 +33,7 @@ async function sendRsvpEmail(payload: Saved) {
         Accept: "application/json",
       },
       body: JSON.stringify({
-        _subject: "پاسخ دعوت‌نامه اسراء و محمدصادق",
+        _subject: "پاسخ دعوت‌نامه فاطمه و علی",
         _template: "table",
         _captcha: "false",
         "نام مراسم": invitation.title,
